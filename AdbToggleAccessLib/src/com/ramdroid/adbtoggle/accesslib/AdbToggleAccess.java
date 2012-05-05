@@ -69,15 +69,7 @@ public class AdbToggleAccess {
      * @return True if installed.
      */
     public static boolean isInstalled(Context context) {
-    	boolean isInstalled = false;
-    	try {
-	    	PackageManager pm = context.getPackageManager();
-	    	Intent intent = pm.getLaunchIntentForPackage("com.ramdroid.adbtoggle");
-	    	isInstalled = (intent != null);
-    	}
-    	catch (Exception e) {
-    	}
-    	return isInstalled;
+    	return isAvailable(context);
     }
     
     /** Check if USB debug settings are enabled.
@@ -124,7 +116,7 @@ public class AdbToggleAccess {
 	}
 	
 	private boolean toggle(boolean state) {
-		boolean result = isAvailable();
+		boolean result = isAvailable(mContext);
 		if (result) {
 			// create receiver to read response
 	        IntentFilter filter = new IntentFilter();
@@ -141,19 +133,19 @@ public class AdbToggleAccess {
 		return result;
 	}
 
-	private boolean isAvailable() {
-		boolean result = checkPermission();
+	private static boolean isAvailable(Context context) {
+		boolean result = checkPermission(context);
 		if (result) {
 			// is AdbToggle installed?
-			PackageManager pm = mContext.getPackageManager();
+			PackageManager pm = context.getPackageManager();
 			Intent i = pm.getLaunchIntentForPackage("com.ramdroid.adbtoggle");
 			result = (i != null);
 		}
 		return result;
 	}
 	
-	private boolean checkPermission() {
-		boolean result = (mContext.checkCallingOrSelfPermission(PERMISSION_ADB_TOGGLE) == PackageManager.PERMISSION_GRANTED );
+	private static boolean checkPermission(Context context) {
+		boolean result = (context.checkCallingOrSelfPermission(PERMISSION_ADB_TOGGLE) == PackageManager.PERMISSION_GRANTED );
 		Log.d(TAG, "PERMISSION_ADB_TOGGLE" + (result ? " " : " not ") + "granted!");
 		return result;
 	}
