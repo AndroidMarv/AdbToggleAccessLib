@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello there! Hit the buttons to toggle USB debug settings!</string>
+    <string name="app_name">AdbToggleAccessLibExample</string>
+    <string name="enable">Enable</string>
+    <string name="disable">Disable</string>
+    <string name="result">State of USB debug settings:</string>
+
+</resources>
