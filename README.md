@@ -3,8 +3,21 @@
 
 Access USB debug settings using the ***ADB Toggle*** app.
 
-In order to use the functionality in your app you need to have ***ADB Toggle*** installed as system application on your phone!
-If ***ADB Toggle*** is not available or not properly installed then then functions in AdbToggleAccessLib will not succeed!
+***ADB Toggle*** is a small security app to enable/disable USB debug settings. If you are an Android developer
+yourself or if you're playing around with Custom ROMs or root apps then you typically have this setting enabled.
+However you compromise your private data when you lose your phone as the thief could easily by-pass any existing
+security mechanisms.
+
+There's a free version that will allow you to toggle USB debug settings from a widget, and also allows third party
+root apps to temporary enable USB debug settings, and disable it again once they are finished with their job.
+
+In the paid version of ***ADB Toggle*** there's also an automatic mode that enables USB debug settings when you
+have unlocked your phone and connect it to your PC, and disables it when you leave.
+
+Read more about ***ADB Toggle*** on http://ramdroid.wordpress.com
+
+In this repository you'll find a library project so you can add support for ***ADB Toggle*** into your own apps.
+There's also a simple example project that demonstrates the functionality.
 
 Here are the required steps to add AdbToggleAccessLib into your own app:
 
@@ -61,4 +74,4 @@ Here are the required steps to add AdbToggleAccessLib into your own app:
 	```
 	
 	*Hint:*
-	When the `adbToggle.enable()` or `adbToggle.disable()` functions are returning false then either ***ADB Toggle*** is not properly installed or your did forget to add the ***ADB Toggle*** permission to your project.
+	When the `adbToggle.enable()` or `adbToggle.disable()` functions are returning false then either ***ADB Toggle*** is not properly installed or you did forget to add the ***ADB Toggle*** permission to your project.
