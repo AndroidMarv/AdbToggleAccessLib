@@ -1,4 +1,4 @@
-﻿AdbToggleAccessLib
+﻿ADB Toggle
 ==================
 
 Access USB debug settings using the ***ADB Toggle*** app.
@@ -15,6 +15,9 @@ In the paid version of ***ADB Toggle*** there's also an automatic mode that enab
 have unlocked your phone and connect it to your PC, and disables it when you leave.
 
 Read more about ***ADB Toggle*** on http://ramdroid.wordpress.com
+
+AdbToggleAccessLib
+==================
 
 In this repository you'll find a library project so you can add support for ***ADB Toggle*** into your own apps.
 There's also a simple example project that demonstrates the functionality.
