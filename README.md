@@ -24,7 +24,7 @@ Here are the required steps to add AdbToggleAccessLib into your own app:
 	boolean isEnabled = AdbToggleAccess.isEnabled(this);
 	```
 	
-5. ...or you can enable USB debug settings by creating an instance of AdbToggleAccess class:
+5. ...or you can enable/disable USB debug settings by creating an instance of AdbToggleAccess class:
 
 	```java
 	AdbToggleAccess adbToggle = new AdbToggleAccess();
@@ -35,7 +35,7 @@ Here are the required steps to add AdbToggleAccessLib into your own app:
 	});
 	```
 	
-6. When finished with your work don't forget to disable USB debug settings:
+	When finished with your work don't forget to disable USB debug settings:
 
 	```java
 	AdbToggleAccess adbToggle = new AdbToggleAccess();
@@ -46,4 +46,5 @@ Here are the required steps to add AdbToggleAccessLib into your own app:
 	});
 	```
 	
-7. Hint: When the `adbToggle.enable()` or `adbToggle.disable()` functions are returning false then either ***ADB Toggle*** is not properly installed or your did forget to add the ***ADB Toggle*** permission to your project.
+	*Hint:*
+	When the `adbToggle.enable()` or `adbToggle.disable()` functions are returning false then either ***ADB Toggle*** is not properly installed or your did forget to add the ***ADB Toggle*** permission to your project.
