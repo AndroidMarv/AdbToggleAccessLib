@@ -1,8 +1,6 @@
 ﻿ADB Toggle
 ==================
 
-Access USB debug settings using the ***ADB Toggle*** app.
-
 ***ADB Toggle*** is a small security app to enable/disable USB debug settings. If you are an Android developer
 yourself or if you're playing around with Custom ROMs or root apps then you typically have this setting enabled.
 However you compromise your private data when you lose your phone as the thief could easily by-pass any existing
@@ -18,6 +16,8 @@ Read more about ***ADB Toggle*** on http://ramdroid.wordpress.com
 
 AdbToggleAccessLib
 ==================
+
+This is an Android library project to access USB debug settings using the ***ADB Toggle*** app.
 
 In this repository you'll find a library project so you can add support for ***ADB Toggle*** into your own apps.
 There's also a simple example project that demonstrates the functionality.
