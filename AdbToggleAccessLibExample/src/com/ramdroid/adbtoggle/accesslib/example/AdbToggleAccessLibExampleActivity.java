@@ -38,31 +38,44 @@ public class AdbToggleAccessLibExampleActivity extends Activity {
     
     private void enable() {
     	
-    	AdbToggleAccess adbToggle = new AdbToggleAccess();
-    	boolean result = adbToggle.enable(this, new OnAdbToggleListener() {
-
-			public void onFinished(boolean successful) {
-				((ToggleButton) findViewById(R.id.status)).setChecked(true);
-			}
-    		
-    	});
-    	if (!result) {
-    		Toast.makeText(this, "Failed to toggle debug settings!", Toast.LENGTH_SHORT).show();
+    	if (checkInstall()) {
+	    	AdbToggleAccess adbToggle = new AdbToggleAccess();
+	    	boolean result = adbToggle.enable(this, new OnAdbToggleListener() {
+	
+				public void onFinished(boolean successful) {
+					((ToggleButton) findViewById(R.id.status)).setChecked(true);
+				}
+	    		
+	    	});
+	    	if (!result) {
+	    		Toast.makeText(this, R.string.failed, Toast.LENGTH_SHORT).show();
+	    	}
     	}
     }
     
     private void disable() {
 
-    	AdbToggleAccess adbToggle = new AdbToggleAccess();
-    	boolean result = adbToggle.disable(this, new OnAdbToggleListener() {
-
-			public void onFinished(boolean successful) {
-				((ToggleButton) findViewById(R.id.status)).setChecked(false);				
-			}
-    		
-    	});
-    	if (!result) {
-    		Toast.makeText(this, "Failed to toggle debug settings!", Toast.LENGTH_SHORT).show();
+    	if (checkInstall()) {
+	    	AdbToggleAccess adbToggle = new AdbToggleAccess();
+	    	boolean result = adbToggle.disable(this, new OnAdbToggleListener() {
+	
+				public void onFinished(boolean successful) {
+					((ToggleButton) findViewById(R.id.status)).setChecked(false);				
+				}
+	    		
+	    	});
+	    	if (!result) {
+	    		Toast.makeText(this, R.string.failed, Toast.LENGTH_SHORT).show();
+	    	}
     	}
+    }
+    
+    private boolean checkInstall() {
+    	boolean isInstalled = AdbToggleAccess.isInstalled(this);
+    	if (!isInstalled) {
+    		Toast.makeText(this, R.string.install, Toast.LENGTH_LONG).show();
+    		AdbToggleAccess.install(this);
+    	}
+    	return isInstalled;
     }
 }

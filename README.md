@@ -8,17 +8,31 @@ If ***ADB Toggle*** is not available or not properly installed then then functio
 
 Here are the required steps to add AdbToggleAccessLib into your own app:
 
-1. Clone the AdbToggleAccessLib project and import it into your Eclipse workspace.
+1. Import the AdbToggleAccessLib library project into your project
 
-2. In Eclipse go to Properties --> Android and add the AdbToggleAccessLib library project
-
-3. Add the ***ADB Toggle*** permission to your AndroidManifest.xml
+2. Add the ***ADB Toggle*** permission to your AndroidManifest.xml
 
 	```java
 	<uses-permission android:name="ramdroid.permission.ADB_TOGGLE" />
 	```
 	
-4. That's it! Now you can check if USB debug settings are enabled...
+3. Before you toggle USB debug settings you need to check if ADB Toggle is installed:
+
+	```java
+	boolean isInstalled = AdbToggleAccess.isInstalled(this);
+	```
+	
+	If this function returns false then guide the user to the Google Play download page for ADB Toggle:
+
+	```java
+	AdbToggleAccess.install(this);
+	```
+	
+	*Hint:*
+	Currently there is not check if ADB Toggle is really installed as system app. At this point
+	we just assume that the user is doing this on his own! ;)
+	
+4. Now you can check if USB debug settings are enabled...
 
 	```java
 	boolean isEnabled = AdbToggleAccess.isEnabled(this);

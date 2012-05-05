@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.provider.Settings;
 import android.util.Log;
 
@@ -43,6 +44,41 @@ public class AdbToggleAccess {
 		}
     	
     };
+    
+    /**
+     * This function does not really install ADB Toggle! It will 
+     * only guide the user to the Google Play download page.
+     * 
+     * @param context Context of your activity/service/...
+     */
+    public static void install(Context context) {
+		Uri uri = Uri.parse("market://details?id=com.ramdroid.adbtoggle");  
+		Intent it = new Intent(Intent.ACTION_VIEW, uri);  
+		it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		context.startActivity(it); 
+    }
+    
+    /** Do a rudimentary check to see if ADB Toggle is installed.
+     * 
+     * This function does not test if ADB Toggle is installed as system app.
+     * It does only check if the app is available on the device.
+     * If ADB Toggle is not installed then use the function install() to
+     * guide the user to the Google Play download page.
+     * 
+	 * @param context Context of your activity/service/...
+     * @return True if installed.
+     */
+    public static boolean isInstalled(Context context) {
+    	boolean isInstalled = false;
+    	try {
+	    	PackageManager pm = context.getPackageManager();
+	    	Intent intent = pm.getLaunchIntentForPackage("com.ramdroid.adbtoggle");
+	    	isInstalled = (intent != null);
+    	}
+    	catch (Exception e) {
+    	}
+    	return isInstalled;
+    }
     
     /** Check if USB debug settings are enabled.
      * 

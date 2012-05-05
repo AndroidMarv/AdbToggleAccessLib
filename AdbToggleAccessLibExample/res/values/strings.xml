@@ -6,5 +6,7 @@
     <string name="enable">Enable</string>
     <string name="disable">Disable</string>
     <string name="result">State of USB debug settings:</string>
+    <string name="failed">"Failed to toggle debug settings!"</string>
+    <string name="install">You need to install ADB Toggle to continue!</string>
 
 </resources>
