@@ -18,7 +18,7 @@ public class AdbToggleAccess {
 	private static final String DISABLE_USB_DEBUG = "com.ramdroid.adbtoggle.DISABLE_USB_DEBUG";
 	private static final String USB_DEBUG_STATUS = "com.ramdroid.adbtoggle.USB_DEBUG_STATUS";
 	
-	private static final String PERMISSION_ADB_TOGGLE = "ramdroid.permission.ADB_TOGGLE";
+	//private static final String PERMISSION_ADB_TOGGLE = "ramdroid.permission.ADB_TOGGLE";
 	
 	/** An interface to get status results from ADB Toggle. */
 	public interface OnAdbToggleListener {
@@ -127,14 +127,14 @@ public class AdbToggleAccess {
 	        
 	        // send toggle command
 			Intent i = new Intent(state ? ENABLE_USB_DEBUG : DISABLE_USB_DEBUG);
-			mContext.sendBroadcast(i, PERMISSION_ADB_TOGGLE);
+			mContext.sendBroadcast(i);//, PERMISSION_ADB_TOGGLE);
 		}
 		
 		return result;
 	}
 
 	private static boolean isAvailable(Context context) {
-		boolean result = checkPermission(context);
+		boolean result = true;//checkPermission(context);
 		if (result) {
 			// is AdbToggle installed?
 			PackageManager pm = context.getPackageManager();
@@ -144,9 +144,11 @@ public class AdbToggleAccess {
 		return result;
 	}
 	
+	/*
 	private static boolean checkPermission(Context context) {
 		boolean result = (context.checkCallingOrSelfPermission(PERMISSION_ADB_TOGGLE) == PackageManager.PERMISSION_GRANTED );
 		Log.d(TAG, "PERMISSION_ADB_TOGGLE" + (result ? " " : " not ") + "granted!");
 		return result;
 	}
+	*/
 }
