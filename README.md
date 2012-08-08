@@ -71,4 +71,4 @@ Here are the required steps to add AdbToggleAccessLib into your own app:
 	```
 	
 	*Hint:*
-	When the `adbToggle.enable()` or `adbToggle.disable()` functions are returning false then either ***ADB Toggle*** is not properly installed or you did forget to add the ***ADB Toggle*** permission to your project.
+	When the `adbToggle.enable()` or `adbToggle.disable()` functions are returning false then ***ADB Toggle*** is not properly installed.
